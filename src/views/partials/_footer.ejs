@@ -1,0 +1,295 @@
+</section>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/script.js"></script>
+
+<script src="../js/html2pdf.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+<div class="modal-dialog p-3 mt-0" style="margin: 0 auto;">
+    <div class="modal fade m-2" style="margin: 0 auto;" tabindex="-1" id="action_modal">
+        <div class="modal-dialog p-3 mt-0" style="margin: 0 auto;">
+            <div class="modal-content" style="margin: 0 auto;">
+                <form method="put" id="sample_form">
+                    <div class="modal-header" id="dynamic_modal_title">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col mb-3 input_container">
+                            <label for="dni" class="input_label">ID</label>
+                            <input type="text" name="dni"
+                                onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="8"
+                                class="input_field " id="idCliente" disabled>
+                        </div>
+
+                        <div class="col mb-3 input_container">
+                            <label for="dni" class="input_label">DNI</label>
+                            <input type="text" name="dni"
+                                onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="8"
+                                class="input_field " id="dniSearch" required>
+                        </div>
+
+                        <div class="col mb-3 input_container">
+                            <label for="nombres" class="input_label">Nombres</label>
+                            <input id="nombresSearch" class="input_field" type="text" name="nombres" title="Inpit title"
+                                placeholder="">
+                        </div>
+
+
+                        <div class="col mb-3 input_container">
+                            <label for="apellidos" class="input_label">Apellidos</label>
+                            <input type="text" name="apellidos" class="input_field" id="apellidosSearch" required>
+                        </div>
+
+                        <div class="col mb-4 input_container">
+                            <label for="telefono" class="input_label">Telefono</label>
+                            <input type="text" name="telefonoSearch"
+                                onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="9"
+                                class="input_field" id="telefonoSearch" required>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" id="id" />
+                        <input type="hidden" name="action" id="action" value="Add" />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button class="btn btn-primary" id="action_button" onclick="actualizar()">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-dialog p-3 mt-0" style="margin: 0 auto;">
+    <div class="modal fade m-2" style="margin: 0 auto;" tabindex="-1" id="action_modalEditData">
+        <div class="modal-dialog p-3 mt-0" style="margin: 0 auto;">
+            <div class="modal-content" style="margin: 0 auto;">
+                <form id="formEditTalla">
+                    <div class="modal-header" id="tituloEditarTalla">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col mb-3 input_container">
+                            <label for="Id" class="input_label">ID</label>
+                            <input type="text" class="input_field" name="ID" id="Id" disabled="">
+                        </div>
+
+                        <div class="col mb-3 input_container">
+                            <label for="talla" class="input_label">Talla</label>
+                            <input type="text" class="input_field" name="talla" id="tallaEdit" disabled="">
+                        </div>
+
+                        <div class="col mb-3 input_container">
+                            <label for="precio" class="input_label">Precio</label>
+                            <input id="precioEdit" class="input_field" type="text" name="precioEdit" title="Inpit title"
+                                placeholder="">
+                        </div>
+
+
+                        <div class="col mb-3 input_container">
+                            <label for="apellidos" class="input_label">Stock</label>
+                            <input type="text" name="apellidos" class="input_field" id="stockEdit">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" id="id">
+                        <input type="hidden" name="action" id="actionEditTalla" value="Add">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button class="btn btn-primary" id="action_buttonEditTalla">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-dialog ">
+    <div class="modal fade modal-lg " tabindex="-1" id="action_modalGenerarVenta">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" id="tituloBoleta">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="divElement">
+
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-10 ">
+                                <h1>Boleta</h1>
+                            </div>
+                            <div class="col-xs-2">
+                                <!-- <img class="img img-responsive" src="https://github.com/parzibyte.png" alt="Logotipo"> -->
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <!-- <div class="col-xs-10">
+                <h1 class="h6">Luis Cabrera Benito</h1>
+                <h1 class="h6">https://parzibyte.me/blog</h1>
+            </div> -->
+                            <div class="col-xs-2 text-center">
+                                <strong>Fecha</strong>
+                                <br>
+                                <h6 id="fecha"></h6>
+                                <br>
+                                <strong>Boleta No.</strong>
+                                <br>
+                                <h6 id="numeroBoleta"></h6>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row text-center" style="margin-bottom: 2rem;">
+                            <div class="col-xs-6">
+                                <h5 class="h6">Cliente</h5>
+                                <strong class="h4" id="cliente"></strong>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col-xs-6">
+                                <br>
+                                <h5 class="h6">Remitente</h5>
+                                <strong class="h4" id="remitente"></strong>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <br>
+                                <table id="tablaBoleta" class="table table-striped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Talla</th>
+                                            <th>Precio unitario</th>
+                                            <th>Cantidad</th>
+                                            <th>Importe</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dtBoleta">
+
+                                    </tbody>
+                                    <tfoot>
+
+                                        <!--  <tr>
+                            <td colspan="4" class="text-right">Subtotal</td>
+                            <td>{{subtotal}}</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="4" class="text-right">Descuento</td>
+                            <td>{{descuento}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-right">Subtotal con descuento</td>
+                            <td>{{subtotalConDescuento}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-right">Impuestos</td>
+                            <td>{{impuestos}}</td>
+                        </tr> -->
+
+                                        <tr>
+                                            <td colspan="4" class="text-right">
+                                                <h4>Total</h4>
+                                            </td>
+                                            <td>
+                                                <h4 id="totalBoleta"></h4>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <p class="h5">Gracias por su compra</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="id" id="id">
+                    <input type="hidden" name="action" id="actionGenerarBoleta" value="Add">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-primary" id="action_buttonGenerarBoleta">ConfirmarVenta</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal-dialog p-3 mt-0" style="margin: 0 auto;">
+    <div class="modal fade m-2" style="margin: 0 auto;" tabindex="-1" id="action_modalSave">
+        <div class="modal-dialog p-3 mt-0" style="margin: 0 auto;">
+            <div class="modal-content" style="margin: 0 auto;">
+                <form id="sample_form">
+                    <div class="modal-header" id="dynamic_modal_titleSave">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col mb-3 input_container">
+                            <label for="dni" class="input_label">DNI</label>
+                            <input type="text" name="dniSave"
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="8"
+                                class="input_field " id="dniSave" required="">
+                        </div>
+
+                        <div class="col mb-3 input_container">
+                            <label for="nombres" class="input_label">Nombres</label>
+                            <input id="nombresSave" class="input_field" type="text" name="nombres" title="Inpit title"
+                                placeholder="">
+                        </div>
+
+
+                        <div class="col mb-3 input_container">
+                            <label for="apellidos" class="input_label">Apellidos</label>
+                            <input type="text" name="apellidos" class="input_field" id="apellidosSave" required="">
+                        </div>
+
+                        <div class="col mb-4 input_container">
+                            <label for="telefono" class="input_label">Telefono</label>
+                            <input type="text" name="telefonoSave"
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="9"
+                                class="input_field" id="telefonoSave" required="">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" id="id">
+                        <input type="hidden" name="action" id="actionSave" value="Add">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button class="btn btn-primary" id="action_buttonSave">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

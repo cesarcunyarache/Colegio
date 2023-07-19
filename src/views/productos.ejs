@@ -1,0 +1,179 @@
+<%- include('partials/_header'); %>
+
+    <%- include('partials/_sidebar'); %>
+        <div class="container-sm">
+            <div class="col mt-4 ">
+                <span id="message" class="px-20 position-fixed top-0 end-0 m-2"></span>
+
+                <div class="col-md-15 px-5">
+                    <div class="px-5">
+                        <div class="card-body">
+                            <form method="post" id="form" autocomplete="off">
+                                <div class="row ">
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="nombreProducto" class="input_label">Nombre del Producto</label>
+                                        <input type="text" name="nombreProducto" class="input_field"
+                                            id="nombreProducto">
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="genero" class="input_label">Genero</label>
+                                        <select name="genero" id="genero" class="input_field">
+                                            <option value="-1">Seleccione un genero</option>
+                                            <option value="Hombre">Hombre</option>
+                                            <option value="Mujer">Mujer</option>
+                                            <option value="Unisex">Unisex</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="categoria" class="input_label">Categoria</label>
+                                        <select name="genero" id="categoria" class="input_field">
+                                        
+                                        </select>
+                                    </div>
+
+                                    <div class="col-4 mb-5 input_container">
+                                        <label for="descripcion" class="input_label">Descripcion</label>
+                                        <input type="text" name="descripcion" class="input_field" id="descripcion">
+                                    </div>
+
+                                </div>
+                                <div class="row mb-3">
+
+                                    <div class="col mb-4 input_container">
+                                        <label for="tallas" class="input_label">Tallas</label>
+                                        <select name="tallas" id="tallas" class="input_field">
+                                            
+                                        </select>
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="precio" class="input_label">Precio</label>
+                                        <input type="number" name="precio" class="input_field" id="precio" required="">
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="stock" class="input_label">Stock</label>
+                                        <input type="number" name="stock" class="input_field" id="stock" required=""
+                                            min="1">
+                                    </div>
+
+
+                                </div>
+
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <button" class="btn btn-primary btn-dark mx-2" id="agregarTalla">Agregar
+                                            Talla
+
+                                        </button">
+                                    </div>
+
+                                    <div class="d-flex justify-content-center align-items-center mx-2">
+                                        <button" class="btn btn-primary btn-dark" id="agregarProducto">Agregar
+                                            Producto
+                                        </button">
+                                    </div>
+
+                                    <div class="d-flex justify-content-center align-items-center mx-2">
+                                        <button" class="btn btn-primary btn-dark" id="actualizarProducto">Actualizar
+                                            Producto
+                                        </button">
+                                    </div>
+
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <button" class="btn btn-primary btn-dark mx-2" id="nuevoProducto">Nuevo
+                                            Producto
+                                        </button">
+                                    </div>
+
+                                </div>
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-15 pt-5 mt-6 px-5">
+                    <div class="row">
+                        <div class="col mx-5">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 table-wrapper">
+                                <table class="table table-striped table-bordered table-wrapper">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th class="sticky">Talla</th>
+                                            <th class="sticky">Precio</th>
+                                            <th class="sticky">Stock</th>
+                                            <th class="sticky">Accion</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dtBody">
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col mb-3">
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-15 px-5">
+                    <div class="row">
+                        <div class="pt-5 ml-3">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 px-5">
+                                <div id="datatable_users_wrapper" class="dataTables_wrapper no-footer">
+                                    
+                                    <table id="datatable_users"
+                                        class="table table-striped table-bordered dataTable no-footer"
+                                        aria-describedby="datatable_users_info" style="width: 926px;">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th class="centered sorting_disabled sorting_asc" rowspan="1"
+                                                    colspan="1" aria-label="Nombre" style="width: 87px;">Nombre</th>
+                                                <th class="centered sorting" tabindex="0"
+                                                    aria-controls="datatable_users" rowspan="1" colspan="1"
+                                                    aria-label="Descripción: activate to sort column ascending"
+                                                    style="width: 353px;">Descripción</th>
+                                                <th class="centered sorting_disabled" rowspan="1" colspan="1"
+                                                    aria-label="Tallas" style="width: 50px;">Tallas</th>
+                                                <th class="centered sorting_disabled" rowspan="1" colspan="1"
+                                                    aria-label="Género" style="width: 60px;">Género</th>
+                                                <th class="centered sorting_disabled" rowspan="1" colspan="1"
+                                                    aria-label="Categoria" style="width: 91px;">Categoria</th>
+                                                <th class="centered sorting" tabindex="0"
+                                                    aria-controls="datatable_users" rowspan="1" colspan="1"
+                                                    aria-label="Accion: activate to sort column ascending"
+                                                    style="width: 57px;">Accion</th>
+                                            </tr>
+
+                                    </table>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script type="module" src="../js/productos.js"></script>
+
+
+
+        <%- include('partials/_footer'); %>

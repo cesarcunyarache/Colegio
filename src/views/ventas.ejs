@@ -1,0 +1,192 @@
+<%- include('partials/_header'); %>
+
+    <%- include('partials/_sidebar'); %>
+
+
+
+
+        <div class="container-sm">
+            <div class="col mt-4 ">
+                <span id="message" class="px-20 position-fixed top-0 end-0 m-2"></span>
+
+                <div class="col-md-15 px-5">
+                    <div class="px-5">
+                        <div class="card-body">
+                            <form id="form" autocomplete="off">
+                                <div class="row ">
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="dni" class="input_label">DNI</label>
+                                        <input type="text" name="dni"
+                                            onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                            maxlength="8" class="input_field " id="dni" required>
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="nombres" class="input_label">Nombres</label>
+                                        <input id="nombres" class="input_field" type="text" name="nombres"
+                                            title="Inpit title" placeholder="" disabled>
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="apellidos" class="input_label">Apellidos</label>
+                                        <input type="text" name="apellidos" class="input_field" id="apellidos" disabled >
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="categoria" class="input_label">Categoria</label>
+                                        <select name="genero" id="categoria" class="input_field">
+                                            
+                                        </select>
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="genero" class="input_label">Genero</label>
+                                        <select name="genero" id="genero" class="input_field">
+                                            <option value="-1">Seleccione un genero</option>
+                                            <option value="Hombre">Hombre</option>
+                                            <option value="Mujer">Mujer</option>
+                                            <option value="Unisex">Unisex</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="producto" class="input_label">Productos</label>
+                                        <select name="productos" id="productos" class="input_field">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-4 input_container">
+                                        <label for="tallas" class="input_label">Tallas</label>
+                                        <select name="tallas" id="tallas" class="input_field">
+                                        </select>
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="precio" class="input_label">Precio</label>
+                                        <input type="number" name="precio" class="input_field" id="precio"  disabled required="">
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                        <label for="stock" class="input_label">Stock</label>
+                                        <input type="number" name="stock" class="input_field" id="stock" disabled required=""
+                                            min="1">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col mb-4 input_container">
+                                        <label for="cantidad" class="input_label">Cantidad</label>
+                                        <input id="cantidad" class="input_field"  min="1" type="number" name="cantidad"
+                                            title="Inpit title" placeholder="" value="1">
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                       
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                       
+                                    </div>
+                                </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button" class="btn btn-primary btn-dark mx-2" id="agregarProducto">Agregar Producto
+
+                                </button">
+                            </div>
+
+                            <div class="d-flex justify-content-center align-items-center mx-2">
+                                <button" class="btn btn-primary btn-dark" id="nuevaVenta">Nueva Venta
+                                </button">
+                            </div>
+
+                            <div class="d-flex justify-content-center align-items-center mx-2">
+                                <button" class="btn btn-primary btn-dark" id="generarVenta">Generar Venta
+                                </button">
+                            </div>
+
+                
+                        </div>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-15 pt-5 mt-6 px-5">
+                <div class="row">
+                    <div class="col mx-5">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 table-wrapper">
+                            <table class="table table-striped table-bordered table-wrapper">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th class="sticky">Producto</th>
+                                        <th class="sticky">Talla</th>
+                                        <th class="sticky">Precio</th>
+                                        <th class="sticky">Cantidad</th>
+                                        <th class="sticky">Importe</th>
+                                        <th class="sticky">Acción</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="dtBody">
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>             
+                </div>
+            </div>
+
+            <div class="col mt-4 ">
+                <div class="col-md-15 px-5">
+                    <div class="px-5">
+                        <div class="card-body">
+                            <form id="form" autocomplete="off">             
+                                <div class="row mb-3">
+                                    <div class="col mb-3 input_container">
+                                       
+                                    </div>
+
+                                    <div class="col mb-3 input_container">
+                                       
+                                    </div>
+                                    <div class="col mb-4 input_container">
+                                        <label for="total" class="input_label">Total</label>
+                                        <input id="total" class="input_field"  min="1" type="number" name="total"
+                                            title="Inpit title" placeholder="" disabled>
+                                    </div>
+
+                                    
+                                </div>
+
+                        </div>
+
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script  type="module" src="../js/ventas.js"></script>
+
+        <%- include('partials/_footer'); %>
